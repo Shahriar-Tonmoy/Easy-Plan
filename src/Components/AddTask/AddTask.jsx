@@ -26,7 +26,7 @@ const AddTask = ({tasks, setTasks}) => {
         .then((data) => {
             setTimeout(() => {
                 window.location.reload();
-              }, 100)
+              }, 1000)
             toast("Task successfully added!!");
             
             setNewTask({...newTask, _id:data.insertedId});

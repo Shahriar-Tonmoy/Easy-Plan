@@ -41,7 +41,7 @@ const List = ({listName, iconURL, filteredTasks, tasks, setTasks}) => {
             </h1>
           </div>
           {filteredTasks?.map((task) => (
-                <Task key={task?._id} handleDelete={handleDelete} task={task}></Task>
+                <Task key={task?._id} handleDelete={handleDelete} tasks={tasks} setTasks={setTasks} task={task}></Task>
         ))}
           <div className="text-center">
             <br />
