@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider/authProvider";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -7,11 +7,12 @@ import "react-toastify/dist/ReactToastify.css";
 const AddTask = ({tasks, setTasks}) => {
   const { register, handleSubmit } = useForm();
   const { user, signOutUser } = useContext(AuthContext);
+  let [newTask, setNewTask] = useState({});
   console.log(user);
   const userEmail = user.email;
   const status = 'todo'
   const onSubmit = (data) => {
-    const newTask = {
+    newTask = {
         ...data, userEmail, status
       };
       fetch("http://localhost:3000/tasks", {
@@ -23,9 +24,15 @@ const AddTask = ({tasks, setTasks}) => {
       })
         .then((res) => res.json())
         .then((data) => {
+            setTimeout(() => {
+                window.location.reload();
+              }, 100)
             toast("Task successfully added!!");
-            const newTasks = [...tasks, newTask ]
-            setTasks(newTasks);
+            
+            setNewTask({...newTask, _id:data.insertedId});
+            
+             const newTasks = [...tasks, newTask ]
+             setTasks(newTasks);
             console.log(data)
         });
     console.log(data)

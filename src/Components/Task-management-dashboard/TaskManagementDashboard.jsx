@@ -26,7 +26,7 @@ const TaskManagementDashboard = () => {
             {user.displayName}
           </h1>
       </div>
-        <TaskLists tasks={tasks}></TaskLists>
+        <TaskLists tasks={tasks} setTasks={setTasks}></TaskLists>
       
       <AddTask tasks={tasks} setTasks={setTasks}></AddTask>
     </div>

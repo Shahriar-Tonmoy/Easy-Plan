@@ -1,6 +1,34 @@
+import { useState } from "react";
 import Task from "../Task/Task";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const List = ({listName, iconURL, tasks}) => {
+const List = ({listName, iconURL, filteredTasks, tasks, setTasks}) => {
+    // const [tsks, setTsks] = useState(tasks);
+    // const tsks = [...tasks]
+    // console.log(tsks);
+
+
+
+    const handleDelete = id =>{
+        if(id){
+            fetch(`http://localhost:3000/tasks/${id}`,{
+            method: "DELETE"
+        })
+            .then(res => res.json())
+            .then(data => {
+                //console.log(data,data.deletedCount)
+                if(data.deletedCount > 0){
+                    toast('DELETED SUCCESSFULLY');
+                    // setTimeout(() => {
+                    //     // window.location.reload();
+                    //   }, 1000)
+                    const remainingTasks = tasks.filter(tsk => tsk?._id !== id);
+                    setTasks(remainingTasks);
+                }
+            })
+        }
+    }
     return (
     <div className="">
       <div className="hero-content flex-col lg:flex-row-reverse w-full md:w-full">
@@ -12,8 +40,8 @@ const List = ({listName, iconURL, tasks}) => {
                 {listName}
             </h1>
           </div>
-          {tasks?.map((task) => (
-                <Task key={task?._id} task={task}></Task>
+          {filteredTasks?.map((task) => (
+                <Task key={task?._id} handleDelete={handleDelete} task={task}></Task>
         ))}
           <div className="text-center">
             <br />
