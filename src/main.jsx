@@ -16,6 +16,8 @@ import Products from "./Components/Products/Products.jsx";
 import Details from "./Components/Details/Details.jsx";
 import Update from "./Components/Update/Update.jsx";
 import TaskManagementDashboard from "./Components/Task-management-dashboard/TaskManagementDashboard.jsx";
+import FAQ from "./Components/FAQ/FAQ.jsx";
+import Email from "./Components/Email/Email.jsx";
 
 
 const router = createBrowserRouter([
@@ -58,6 +60,14 @@ const router = createBrowserRouter([
       {
         path:"my_cart",
         element:<PrivateRoute><MyCart></MyCart></PrivateRoute>
+      },
+      {
+        path:"faq",
+        element:<PrivateRoute><FAQ></FAQ></PrivateRoute>
+      },
+      {
+        path:"contactus",
+        element:<PrivateRoute><Email></Email></PrivateRoute>
       },
       {
         path:"/update/:id",
