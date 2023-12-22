@@ -17,7 +17,7 @@ const Root = () => {
         }
       }
     return (
-           <div className={`${theme=='dark' && 'bg-[#222831]'} `} data-theme={theme}>
+           <div className={`${theme=='dark' ? 'bg-[#222831]' : 'bg-[#EEEEEE]'} `} data-theme={theme}>
            <Nav handleToggle={handleToggle}></Nav>
            <Outlet></Outlet>
            <Footer ></Footer>

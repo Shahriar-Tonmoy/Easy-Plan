@@ -15,6 +15,7 @@ import MyCart from "./Components/MyCart/MyCart.jsx";
 import Products from "./Components/Products/Products.jsx";
 import Details from "./Components/Details/Details.jsx";
 import Update from "./Components/Update/Update.jsx";
+import TaskManagementDashboard from "./Components/Task-management-dashboard/TaskManagementDashboard.jsx";
 
 
 const router = createBrowserRouter([
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "/dashboard",
+        element: <PrivateRoute><TaskManagementDashboard></TaskManagementDashboard></PrivateRoute>,
       },
       {
         path: "registration",

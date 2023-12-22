@@ -20,7 +20,7 @@ const SignIn = () => {
         e.target.reset();
         toast("Login successful");
         setTimeout(() => {
-          navigate("/")
+          navigate("/dashboard")
         }, 2000)
         //axios
       })
@@ -36,7 +36,7 @@ const SignIn = () => {
         console.log(result.user);
         toast("Login successful");
         setTimeout(() => {
-          navigate("/")
+          navigate("/dashboard")
         }, 2000)   
       })
       .catch((error) => console.log(error.message));

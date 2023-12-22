@@ -5,6 +5,7 @@ import 'aos/dist/aos.css';
 import Brands from "../Brands/Brands";
 import FAQ from "../FAQ/FAQ";
 import Email from "../Email/Email";
+import { Link } from "react-router-dom";
 
 
 const Home = () => {
@@ -28,6 +29,9 @@ const Home = () => {
             {/* <span className="text-[#00ADB5]">Next Wheels</span> */}
             </h1>
             <p className="hidden md:block">Welcome to TaskForge, where unparalleled task management meets seamless collaboration. Unleash the full potential of your productivity with our comprehensive system designed for businesses and individuals alike. Effortlessly organize, prioritize, and execute tasks with precision. Foster collaboration through intuitive features that streamline communication. Elevate your workflow experience and achieve more together. TaskForge - Transforming Tasks into Triumphs.</p>
+            <Link to="/dashboard"><button className="btn  bg-[#00ADB5] text-white border-[#00ADB5] hover:bg-opacity-0 hover:border-[#00ADB5] mt-10">
+            Let’s Explore
+            </button></Link>
           </div>
         </div>
       </div>

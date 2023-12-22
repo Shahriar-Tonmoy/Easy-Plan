@@ -1,9 +1,11 @@
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Nav.css";
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/authProvider";
 const Nav = ({ handleToggle }) => {
   const { user, signOutUser } = useContext(AuthContext);
+  const navigate = useNavigate();
   console.log(user);
   const navLinks = (
     <>
@@ -30,6 +32,7 @@ const Nav = ({ handleToggle }) => {
 
   const handleSignOut = () => {
     signOutUser();
+    navigate("/")
   };
 
   return (
@@ -60,8 +63,8 @@ const Nav = ({ handleToggle }) => {
           </ul>
         </div>
         <div className="flex flex-col items-center">
-          <p className="text-3xl font-bold text-[#00ADB5]">NW</p>
-          <p className="text-lg text-[#00ADB5]">Next Wheels</p>
+          <p className="text-3xl font-bold text-[#00ADB5]">EP</p>
+          <p className="text-lg text-[#00ADB5]">EasyPlan</p>
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -88,11 +91,11 @@ const Nav = ({ handleToggle }) => {
         {user && (
           <div className="flex flex-col md:flex-row gap-7 items-center justify-center">
             <img
-              className="rounded-full border-2 border-[#00ADB5] h-10 w-10"
+              className="rounded-full border-2 border-[#00ADB5] h-10 w-10 hidden md:block"
               src={user.photoURL}
               alt=""
             />
-            <h1 className="text-[#00ADB5] text-xl font-semibold">
+            <h1 className="text-[#00ADB5] text-xl font-semibold hidden md:block">
               {user.displayName}
             </h1>
             <button
