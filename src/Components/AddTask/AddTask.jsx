@@ -1,11 +1,39 @@
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { AuthContext } from "../../AuthProvider/authProvider";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const AddTask = () => {
+const AddTask = ({tasks, setTasks}) => {
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const { user, signOutUser } = useContext(AuthContext);
+  console.log(user);
+  const userEmail = user.email;
+  const status = 'todo'
+  const onSubmit = (data) => {
+    const newTask = {
+        ...data, userEmail, status
+      };
+      fetch("http://localhost:3000/tasks", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(newTask),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+            toast("Task successfully added!!");
+            const newTasks = [...tasks, newTask ]
+            setTasks(newTasks);
+            console.log(data)
+        });
+    console.log(data)
+    };
 
   return (
-    <div className="hero min-h-screen ">
+    <div className="hero ">
+        <ToastContainer></ToastContainer>
       <div className="hero-content flex-col lg:flex-row-reverse w-full">
         <div className="text-center lg:text-left"></div>
         <div className="card flex-shrink-0 w-full  shadow-2xl border border-[#00ADB5] bg-base-100 py-20 px-5">

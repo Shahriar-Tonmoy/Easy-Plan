@@ -90,14 +90,14 @@ const Nav = ({ handleToggle }) => {
         </button>
         {user && (
           <div className="flex flex-col md:flex-row gap-7 items-center justify-center">
-            <img
+            {/* <img
               className="rounded-full border-2 border-[#00ADB5] h-10 w-10 hidden md:block"
               src={user.photoURL}
               alt=""
             />
             <h1 className="text-[#00ADB5] text-xl font-semibold hidden md:block">
               {user.displayName}
-            </h1>
+            </h1> */}
             <button
               onClick={handleSignOut}
               className="btn bg-opacity-0 border-[#00ADB5] hover:bg-opacity-0 hover:border-orange-200"
